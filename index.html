@@ -3,35 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexander Frost | Screenwriter & Story Architect</title>
-    <meta name="description" content="Alexander Frost - Crafting cinematic narratives that transcend the ordinary. Award-winning screenwriter specializing in psychological thrillers and science fiction.">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <title>Victor Fidelis | Scriptwriter Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a192f;
-            --secondary: #112240;
-            --accent: #64ffda;
-            --text: #ccd6f6;
-            --text-secondary: #8892b0;
-            --glass-bg: rgba(17, 34, 64, 0.8);
-            --transition-slow: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
-            --transition-medium: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-            --transition-fast: 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --primary: #3d1860;
+            --secondary: #6e44a0;
+            --accent: #c7a2ed;
+            --text: #fdfdfd;
+            --dark: #0a0514;
+            --light: #f5f0ff;
+            --transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
-        /* Core Styles */
         * {
             margin: 0;
             padding: 0;
@@ -40,109 +28,123 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--primary);
             color: var(--text);
+            background-color: var(--dark);
             overflow-x: hidden;
-            line-height: 1.7;
+            cursor: none;
         }
 
         h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: var(--text);
-            margin-bottom: 1.5rem;
         }
 
-        .script-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
+        .light-theme {
+            background-color: var(--light);
+            color: var(--dark);
         }
 
-        p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(199, 162, 237, 0.6);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
         }
 
-        section {
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
+        .cursor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(199, 162, 237, 0.3);
+            pointer-events: none;
+            z-index: 9998;
         }
 
-        .section-padding {
-            padding: 120px 0;
-        }
-
-        .container {
-            position: relative;
-            z-index: 5;
-        }
-
-        /* Navigation */
+        /* Navbar Styles */
         .navbar {
-            background-color: rgba(10, 25, 47, 0.95);
+            background-color: rgba(10, 5, 20, 0.8);
             backdrop-filter: blur(10px);
-            transition: all var(--transition-medium);
-            padding: 15px 0;
+            position: fixed;
+            width: 100%;
             z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition);
         }
 
         .navbar.scrolled {
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
-            padding: 10px 0;
-        }
-
-        .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--text);
-            letter-spacing: 1px;
-        }
-
-        .navbar-brand span {
-            color: var(--accent);
+            padding: 0.5rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
         .nav-link {
-            font-weight: 500;
-            margin: 0 10px;
-            color: var(--text-secondary);
             position: relative;
-            transition: all var(--transition-fast);
+            color: var(--text);
+            margin: 0 1rem;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+            opacity: 0.7;
         }
 
         .nav-link:hover {
+            opacity: 1;
             color: var(--accent);
+            transform: translateY(-2px);
         }
 
-        .nav-link::before {
-            content: "";
+        .nav-link::after {
+            content: '';
             position: absolute;
+            bottom: 0;
+            left: 0;
             width: 0;
             height: 2px;
-            bottom: -2px;
-            left: 0;
             background-color: var(--accent);
-            transition: all var(--transition-fast);
-            opacity: 0;
+            transition: var(--transition);
         }
 
-        .nav-link:hover::before {
+        .nav-link:hover::after {
             width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        .theme-toggle:hover {
             opacity: 1;
+            color: var(--accent);
+            transform: rotate(180deg);
         }
 
         /* Hero Section */
         #hero {
+            position: relative;
             height: 100vh;
+            width: 100%;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 0;
         }
 
         .hero-background {
@@ -151,186 +153,151 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-position: center;
             background-size: cover;
-            background-repeat: no-repeat;
-            transition: opacity 2s ease-in-out;
+            background-position: center;
+            transition: opacity 1.5s ease-in-out;
             opacity: 0;
         }
 
         .hero-background.active {
-            opacity: 0.7;
+            opacity: 0.4;
         }
 
-        .hero-overlay {
+        .stars-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(10, 25, 47, 0.9) 0%,
-                rgba(10, 25, 47, 0.7) 100%
-            );
-            z-index: 1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             text-align: center;
-            max-width: 900px;
-            padding: 0 20px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            letter-spacing: 2px;
-            font-weight: 400;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s forwards 0.5s;
+            max-width: 800px;
+            padding: 0 2rem;
         }
 
         .hero-title {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s forwards 0.8s;
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
         }
 
-        .hero-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+        .hero-subtitle {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeUp 1s forwards 1.1s;
+            animation: fadeInUp 1s forwards 0.5s;
         }
 
-        .hero-btn {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s forwards 1.4s;
-        }
-
-        @keyframes fadeUp {
+        @keyframes fadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Glitch Effect */
-        .glitch-wrapper {
-            position: relative;
+        .typewriter {
             display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            border-right: 0.15em solid var(--accent);
         }
 
-        .glitch {
-            position: relative;
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent); }
+        }
+
+        .hero-cta {
             display: inline-block;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            left: 2px;
-            text-shadow: -1px 0 rgba(255, 0, 0, 0.7);
-            animation: glitch-animation-1 2s infinite linear alternate-reverse;
-        }
-
-        .glitch::after {
-            left: -2px;
-            text-shadow: 1px 0 rgba(0, 255, 255, 0.7);
-            animation: glitch-animation-2 3s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-animation-1 {
-            0% { clip-path: inset(30% 0 59% 0); }
-            20% { clip-path: inset(18% 0 55% 0); }
-            40% { clip-path: inset(83% 0 1% 0); }
-            60% { clip-path: inset(96% 0 3% 0); }
-            80% { clip-path: inset(23% 0 55% 0); }
-            100% { clip-path: inset(82% 0 13% 0); }
-        }
-
-        @keyframes glitch-animation-2 {
-            0% { clip-path: inset(5% 0 78% 0); }
-            20% { clip-path: inset(44% 0 33% 0); }
-            40% { clip-path: inset(68% 0 15% 0); }
-            60% { clip-path: inset(28% 0 61% 0); }
-            80% { clip-path: inset(13% 0 75% 0); }
-            100% { clip-path: inset(54% 0 5% 0); }
-        }
-
-        /* Buttons */
-        .custom-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            font-weight: 500;
+            background-color: transparent;
+            color: var(--text);
             border: 2px solid var(--accent);
-            color: var(--accent);
-            background: transparent;
-            border-radius: 4px;
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 0.5rem;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            transition: all var(--transition-medium);
-            cursor: pointer;
-            text-decoration: none;
-            letter-spacing: 1px;
+            transition: var(--transition);
         }
 
-        .custom-btn::before {
+        .hero-cta::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 0%;
             height: 100%;
-            background: var(--accent);
-            transition: all var(--transition-medium);
+            background-color: var(--accent);
             z-index: -1;
+            transition: var(--transition);
         }
 
-        .custom-btn:hover {
-            color: var(--primary);
+        .hero-cta:hover {
+            color: var(--dark);
         }
 
-        .custom-btn:hover::before {
+        .hero-cta:hover::before {
             width: 100%;
         }
 
-        .custom-btn.filled {
-            background: var(--accent);
-            color: var(--primary);
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text);
+            font-size: 2rem;
+            animation: float 2s ease-in-out infinite;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
         }
 
-        .custom-btn.filled::before {
-            background: transparent;
-        }
-
-        .custom-btn.filled:hover {
+        .scroll-down:hover {
+            opacity: 1;
             color: var(--accent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(-50%); }
+            50% { transform: translateY(-10px) translateX(-50%); }
         }
 
         /* About Section */
         #about {
             position: relative;
+            padding: 8rem 0;
+            min-height: 100vh;
             overflow: hidden;
         }
 
@@ -340,287 +307,598 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-position: center;
             background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
+            background-position: center;
+            opacity: 0.2;
+            transition: var(--transition);
         }
 
-        .section-title {
+        .about-container {
             position: relative;
-            display: inline-block;
-            margin-bottom: 3rem;
+            z-index: 2;
         }
 
-        .section-title::after {
-            content: "";
+        .about-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .about-heading h2 {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-heading::after {
+            content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
-            width: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
             height: 3px;
             background-color: var(--accent);
         }
 
-        .about-img {
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transform: perspective(1000px) rotateY(0deg);
-            transition: transform var(--transition-slow);
-        }
-
-        .about-img:hover {
-            transform: perspective(1000px) rotateY(5deg);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            transition: transform var(--transition-medium);
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
         .about-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .bio-highlight {
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .skills-list {
             display: flex;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-            padding-left: 0;
-            list-style: none;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
         }
 
-        .skills-list li {
-            margin-right: 20px;
-            margin-bottom: 10px;
+        .about-image-container {
+            flex: 1;
             position: relative;
-            padding-left: 25px;
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        .skills-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        /* Glass Card */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            height: 400px;
+            border-radius: 10px;
             overflow: hidden;
-            position: relative;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
         }
 
-        .glass-card::before {
+        .about-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .about-image.active {
+            opacity: 1;
+        }
+
+        .about-text {
+            flex: 1;
+            padding: 2rem;
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .about-text.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .about-text h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-quote {
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 2rem;
+            text-align: center;
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .about-quote.animate {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .about-quote blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+
+        .timeline::after {
             content: '';
             position: absolute;
+            width: 3px;
+            background-color: var(--accent);
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.05) 0%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            z-index: -1;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Clay Card */
-        .clay-card {
-            background: var(--secondary);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 
-                8px 8px 16px rgba(0, 0, 0, 0.25),
-                -8px -8px 16px rgba(255, 255, 255, 0.05);
-            border: none;
-            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .clay-card:hover {
-            transform: scale(1.02);
-            box-shadow: 
-                12px 12px 24px rgba(0, 0, 0, 0.3),
-                -12px -12px 24px rgba(255, 255, 255, 0.07);
-        }
-
-        /* Portfolio Section */
-        #portfolio {
-            background-color: var(--secondary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-position: center;
-            background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .portfolio-filter-btn {
-            background: transparent;
-            border: none;
-            padding: 8px 20px;
-            margin: 5px;
-            color: var(--text-secondary);
-            font-weight: 500;
-            position: relative;
-            cursor: pointer;
-            transition: all var(--transition-fast);
-        }
-
-        .portfolio-filter-btn::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%);
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 0 40px;
+            margin-bottom: 60px;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .timeline-item.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
             background-color: var(--accent);
-            transition: all var(--transition-fast);
-        }
-
-        .portfolio-filter-btn:hover,
-        .portfolio-filter-btn.active {
-            color: var(--accent);
-        }
-
-        .portfolio-filter-btn:hover::after,
-        .portfolio-filter-btn.active::after {
-            width: 80%;
-        }
-
-        .portfolio-item {
-            margin-bottom: 30px;
-            overflow: hidden;
-            position: relative;
-            border-radius: 10px;
-        }
-
-        .portfolio-content {
-            padding: 20px;
-            position: relative;
+            border-radius: 50%;
+            top: 15px;
             z-index: 1;
         }
 
-        .portfolio-category {
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Scripts/Portfolio Section */
+        #scripts {
+            position: relative;
+            padding: 8rem 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .scripts-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            transition: var(--transition);
+        }
+
+        .scripts-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .scripts-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .scripts-heading h2 {
             display: inline-block;
-            padding: 5px 15px;
-            background-color: rgba(100, 255, 218, 0.15);
-            border-radius: 30px;
-            color: var(--accent);
-            font-size: 0.8rem;
-            margin-bottom: 15px;
+            padding: 0 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .portfolio-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            transition: all var(--transition-fast);
+        .scripts-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
         }
 
-        .portfolio-logline {
-            font-size: 1rem;
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-        }
-
-        .portfolio-meta {
+        .genres-tabs {
             display: flex;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            gap: 1rem;
+            margin-bottom: 3rem;
         }
 
-        .portfolio-meta-item {
-            margin-right: 15px;
-            margin-bottom: 8px;
+        .genre-tab {
+            background-color: transparent;
+            color: var(--text);
+            border: 2px solid var(--secondary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0.7;
+        }
+
+        .genre-tab:hover, .genre-tab.active {
+            background-color: var(--secondary);
+            opacity: 1;
+        }
+
+        .scripts-wrapper {
+            position: relative;
+        }
+
+        .scripts-content {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .scripts-content.active {
+            display: grid;
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .script-card {
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .script-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .script-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .script-info {
+            padding: 1.5rem;
+        }
+
+        .script-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .script-desc {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .script-card .badge {
+            background-color: var(--secondary);
+            color: var(--text);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .script-card .badge:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Script Modal */
+        .script-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            width: 80%;
+            max-width: 900px;
+            background-color: rgba(61, 24, 96, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            animation: modalFadeIn 0.4s;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--text);
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .modal-body {
+            margin-bottom: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-desc {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-sample {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-line;
+            line-height: 1.6;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1rem;
+        }
+
+        .modal-btn {
+            background-color: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-btn:hover {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Process Section */
+        #process {
+            position: relative;
+            padding: 8rem 0;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .process-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            transition: var(--transition);
+        }
+
+        .process-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .process-heading h2 {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .process-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: rgba(199, 162, 237, 0.3);
+            transform: translateX(-1px);
+        }
+
+        .process-step {
             display: flex;
             align-items: center;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: var(--transition);
         }
 
-        .portfolio-meta-item i {
-            color: var(--accent);
-            margin-right: 5px;
+        .process-step.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
-        .portfolio-actions {
+        .process-step:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .process-icon {
+            flex: 0 0 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: var(--primary);
             display: flex;
-            flex-wrap: wrap;
-        }
-
-        .portfolio-link {
-            display: inline-flex;
             align-items: center;
-            margin-right: 15px;
+            justify-content: center;
+            font-size: 2.5rem;
             color: var(--accent);
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all var(--transition-fast);
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(199, 162, 237, 0.5);
+            position: relative;
         }
 
-        .portfolio-link i {
-            margin-left: 5px;
-            transition: all var(--transition-fast);
+        .process-content {
+            flex: 1;
+            padding: 2rem;
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: calc(50% - 70px);
         }
 
-        .portfolio-link:hover {
-            opacity: 0.8;
+        .process-title {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .portfolio-link:hover i {
-            transform: translateX(3px);
+        .process-desc {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .process-connect {
+            flex: 0 0 40px;
+            height: 2px;
+            background-color: var(--accent);
         }
 
         /* Testimonials Section */
         #testimonials {
             position: relative;
+            padding: 8rem 0;
+            min-height: 100vh;
             overflow: hidden;
         }
 
@@ -630,394 +908,187 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-position: center;
             background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
+            background-position: center;
+            opacity: 0.2;
+            transition: var(--transition);
         }
 
-        .testimonial-container {
+        .testimonials-container {
             position: relative;
-            overflow: hidden;
-            padding: 20px 0;
+            z-index: 2;
         }
 
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .testimonial-card {
-            flex: 0 0 100%;
-            max-width: 100%;
-            padding: 0 15px;
-            opacity: 0.7;
-            transform: scale(0.9);
-            transition: all var(--transition-medium);
-        }
-
-        .testimonial-card.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .testimonial-inner {
+        .testimonials-heading {
+            text-align: center;
+            margin-bottom: 3rem;
             position: relative;
-            padding: 40px 30px;
         }
 
-        .testimonial-quote {
-            font-size: 3rem;
-            color: var(--accent);
-            opacity: 0.3;
+        .testimonials-heading h2 {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 2.5rem;
+            background: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .testimonials-heading::after {
+            content: '';
             position: absolute;
-            top: 10px;
-            left: 20px;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slide {
+            display: none;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: var(--transition);
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeScale 0.8s forwards;
+        }
+
+        @keyframes fadeScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         .testimonial-content {
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            margin-bottom: 2rem;
             position: relative;
-            z-index: 1;
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(199, 162, 237, 0.3);
+            font-family: serif;
+            line-height: 0;
+        }
+
+        .testimonial-content::after {
+            content: '"';
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            font-size: 5rem;
+            color: rgba(199, 162, 237, 0.3);
+            font-family: serif;
+            line-height: 0;
         }
 
         .testimonial-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
             font-style: italic;
-            margin-bottom: 20px;
-            color: var(--text);
         }
 
         .testimonial-author {
             display: flex;
             align-items: center;
+            justify-content: center;
+            gap: 1rem;
         }
 
-        .testimonial-author-img {
-            width: 50px;
-            height: 50px;
+        .testimonial-image {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-        }
-
-        .testimonial-author-img img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            border: 2px solid var(--accent);
         }
 
-        .testimonial-author-info {
-            flex: 1;
+        .testimonial-info h4 {
+            color: var(--accent);
+            margin-bottom: 0.2rem;
         }
 
-        .testimonial-author-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text);
-        }
-
-        .testimonial-author-role {
+        .testimonial-info p {
             font-size: 0.9rem;
-            color: var(--text-secondary);
+            opacity: 0.7;
         }
 
         .testimonial-controls {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .testimonial-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            padding: 5px 15px;
+            background-color: transparent;
+            color: var(--text);
+            border: 2px solid var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: var(--transition);
         }
 
         .testimonial-btn:hover {
-            color: var(--accent);
+            background-color: var(--accent);
+            color: var(--dark);
         }
 
         .testimonial-indicators {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
         }
 
-        .testimonial-indicator {
+        .testimonial-dot {
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: var(--text-secondary);
-            margin: 0 5px;
+            background-color: rgba(199, 162, 237, 0.3);
             cursor: pointer;
-            transition: all var(--transition-fast);
+            transition: var(--transition);
         }
 
-        .testimonial-indicator.active {
+        .testimonial-dot.active {
             background-color: var(--accent);
-            transform: scale(1.2);
-        }
-
-        /* Collaborations */
-        .collaborations {
-            margin-top: 60px;
-        }
-
-        .collaborations-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 0 -10px;
-        }
-
-        .collaboration-item {
-            flex: 0 0 calc(20% - 20px);
-            margin: 10px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(17, 34, 64, 0.5);
-            border-radius: 10px;
-            transition: all var(--transition-fast);
-            filter: grayscale(100%);
-            opacity: 0.6;
-        }
-
-        .collaboration-item:hover {
-            filter: grayscale(0);
-            opacity: 1;
-            transform: translateY(-5px);
-        }
-
-        .collaboration-item img {
-            max-width: 100%;
-            max-height: 60px;
-        }
-
-        /* Skills Section */
-        #skills {
-            background-color: var(--secondary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skills-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-position: center;
-            background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .skills-container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .skill-category {
-            margin-bottom: 40px;
-        }
-
-        .skill-category-title {
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            color: var(--text);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        .skill-category-title::after {
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -10px;
-        }
-
-        .skill-item {
-            flex: 0 0 calc(33.333% - 20px);
-            margin: 10px;
-            padding: 15px;
-            background-color: rgba(10, 25, 47, 0.8);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            transition: all var(--transition-fast);
-            cursor: default;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-            background-color: rgba(10, 25, 47, 1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
-
-        .skill-info {
-            flex: 1;
-        }
-
-        .skill-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--text);
-        }
-
-        .skill-level {
-            width: 100%;
-            height: 4px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background-color: var(--accent);
-            border-radius: 2px;
-            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-            width: 0;
-        }
-
-        /* Blog Section */
-        #blog {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .blog-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-position: center;
-            background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .blog-card {
-            overflow: hidden;
-            height: 100%;
-        }
-
-        .blog-img {
-            position: relative;
-            overflow: hidden;
-            height: 200px;
-            border-radius: 10px 10px 0 0;
-        }
-
-        .blog-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-medium);
-        }
-
-        .blog-card:hover .blog-img img {
-            transform: scale(1.1);
-        }
-
-        .blog-date {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            color: var(--primary);
-            padding: 5px 15px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            transition: color var(--transition-fast);
-        }
-
-        .blog-card:hover .blog-title {
-            color: var(--accent);
-        }
-
-        .blog-excerpt {
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        .blog-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-
-        .blog-link i {
-            margin-left: 5px;
-            transition: all var(--transition-fast);
-        }
-
-        .blog-link:hover {
-            opacity: 0.8;
-        }
-
-        .blog-link:hover i {
-            transform: translateX(3px);
+            transform: scale(1.3);
         }
 
         /* Contact Section */
         #contact {
-            background-color: var(--secondary);
             position: relative;
+            padding: 8rem 0;
+            min-height: 100vh;
             overflow: hidden;
         }
 
@@ -1027,290 +1098,672 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-position: center;
             background-size: cover;
-            opacity: 0.1;
-            z-index: 0;
+            background-position: center;
+            opacity: 0.2;
+            transition: var(--transition);
         }
 
-        .contact-content {
-            text-align: center;
-            margin-bottom: 50px;
+        .contact-container {
             position: relative;
             z-index: 2;
         }
 
-        .contact-title {
+        .contact-heading {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .contact-heading h2 {
+            display: inline-block;
+            padding: 0 2rem;
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            background: linear-gradient(120deg, var(--secondary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contact-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .contact-info.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .contact-info h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            flex-shrink: 0;
         }
 
         .contact-text {
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .contact-text a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-text a:hover {
+            color: var(--accent);
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            background-color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent);
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .social-link:hover {
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .social-link:hover::before {
+            transform: scale(1);
         }
 
         .contact-form {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transform: translateX(50px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .contact-form.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .contact-form h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 1.5rem;
+            position: relative;
         }
 
         .form-control {
-            background: rgba(10, 25, 47, 0.8);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            height: 55px;
-            padding: 15px 20px;
-            font-size: 1rem;
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
             color: var(--text);
-            transition: all var(--transition-fast);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
         }
 
         .form-control:focus {
             outline: none;
-            box-shadow: none;
             border-color: var(--accent);
-            background: rgba(10, 25, 47, 1);
+            box-shadow: 0 0 10px rgba(199, 162, 237, 0.5);
+        }
+
+        .form-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .form-control:focus + .form-label,
+        .form-control:not(:placeholder-shown) + .form-label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background-color: rgba(61, 24, 96, 0.8);
+            padding: 0 5px;
         }
 
         textarea.form-control {
-            height: 160px;
-            resize: none;
+            min-height: 150px;
+            resize: vertical;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .form-submit {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Social Links */
-        .social-links {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .submit-btn {
+            background-color: transparent;
             color: var(--text);
-            font-size: 1.2rem;
-            margin: 0 10px;
-            transition: all var(--transition-fast);
-            background-color: rgba(10, 25, 47, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--accent);
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
 
-        .social-link:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-5px);
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            color: var(--dark);
+        }
+
+        .submit-btn:hover::before {
+            width: 100%;
+        }
+
+        /* Map */
+        .map-container {
+            margin-top: 3rem;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .map-container.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         /* Footer */
         .footer {
-            background-color: var(--primary);
-            padding: 30px 0;
+            background-color: var(--dark);
+            color: var(--text);
+            padding: 3rem 0 1rem;
             text-align: center;
             position: relative;
         }
 
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--text);
-            margin-bottom: 20px;
-            display: inline-block;
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .footer-logo span {
+        .footer-logo {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
             color: var(--accent);
+            margin-bottom: 1.5rem;
         }
 
         .footer-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.7;
         }
 
         .footer-links {
-            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .footer-link {
-            color: var(--text-secondary);
-            margin: 0 10px;
-            font-size: 0.9rem;
+            color: var(--text);
             text-decoration: none;
-            transition: all var(--transition-fast);
+            transition: var(--transition);
+            opacity: 0.7;
         }
 
         .footer-link:hover {
             color: var(--accent);
+            opacity: 1;
         }
 
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background-color: var(--secondary);
-            border: 2px solid var(--accent);
-            color: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all var(--transition-fast);
-            z-index: 999;
+            color: var(--text);
+            background-color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .back-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .back-to-top:hover {
+        .footer-social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-color: var(--accent);
-            color: var(--primary);
+            transform: scale(0);
+            transition: var(--transition);
+            border-radius: 50%;
+            z-index: -1;
         }
 
-        /* Text Scramble Effect */
+        .footer-social-link:hover {
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .footer-social-link:hover::before {
+            transform: scale(1);
+        }
+
+        .footer-bottom {
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .loader:before, .loader:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        .loader:before {
+            animation: spin 2s linear infinite;
+        }
+
+        .loader:after {
+            border-top-color: var(--secondary);
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Text Effects */
+        .glitch-text {
+            position: relative;
+            color: var(--text);
+            font-size: inherit;
+            letter-spacing: 3px;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+
+        .glitch-text::before {
+            color: #0ff;
+            animation: glitch-effect 3s infinite;
+            clip: rect(44px, 450px, 56px, 0);
+            transform: skew(0.5deg);
+        }
+
+        .glitch-text::after {
+            color: #f0f;
+            animation: glitch-effect 2s infinite;
+            clip: rect(44px, 450px, 46px, 0);
+            transform: skew(-0.5deg);
+        }
+
+        @keyframes glitch-effect {
+            0% { clip: rect(44px, 450px, 56px, 0); }
+            5% { clip: rect(24px, 450px, 46px, 0); }
+            10% { clip: rect(54px, 450px, 86px, 0); }
+            15% { clip: rect(14px, 450px, 36px, 0); }
+            20% { clip: rect(44px, 450px, 96px, 0); }
+            25% { clip: rect(34px, 450px, 76px, 0); }
+            30% { clip: rect(44px, 450px, 86px, 0); }
+            35% { clip: rect(24px, 450px, 46px, 0); }
+            40% { clip: rect(44px, 450px, 56px, 0); }
+            45% { clip: rect(44px, 450px, 56px, 0); }
+            50% { clip: rect(24px, 450px, 46px, 0); }
+            55% { clip: rect(54px, 450px, 86px, 0); }
+            60% { clip: rect(14px, 450px, 36px, 0); }
+            65% { clip: rect(44px, 450px, 96px, 0); }
+            70% { clip: rect(34px, 450px, 76px, 0); }
+            75% { clip: rect(44px, 450px, 86px, 0); }
+            80% { clip: rect(24px, 450px, 46px, 0); }
+            85% { clip: rect(44px, 450px, 56px, 0); }
+            90% { clip: rect(44px, 450px, 56px, 0); }
+            95% { clip: rect(24px, 450px, 46px, 0); }
+            100% { clip: rect(44px, 450px, 56px, 0); }
+        }
+
         .scramble-text {
             display: inline-block;
         }
 
-        /* Magnetic Elements */
-        .magnetic-element {
+        .magnetic-button {
             display: inline-block;
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            transition: transform 0.1s ease;
         }
 
         /* Media Queries */
-        @media (max-width: 991.98px) {
+        @media (max-width: 992px) {
             .hero-title {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
 
-            .skill-item {
-                flex: 0 0 calc(50% - 20px);
+            .about-content {
+                flex-direction: column;
             }
 
-            .collaboration-item {
-                flex: 0 0 calc(33.333% - 20px);
+            .about-image-container {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
             }
 
-            .navbar-collapse {
-                background-color: rgba(10, 25, 47, 0.95);
-                padding: 20px;
-                border-radius: 10px;
+            .about-text {
+                width: 100%;
+            }
+
+            .process-steps::before {
+                left: 20px;
+            }
+
+            .process-step, .process-step:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .process-icon {
+                flex: 0 0 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                margin-right: 20px;
+            }
+
+            .process-content {
+                max-width: calc(100% - 70px);
+            }
+
+            .timeline::after {
+                left: 40px;
+            }
+
+            .timeline-item, .timeline-item:nth-child(even) {
+                width: 100%;
+                padding-left: 80px;
+                padding-right: 0;
+                left: 0;
+            }
+
+            .timeline-item::after, .timeline-item:nth-child(even)::after {
+                left: 30px;
             }
         }
 
-        @media (max-width: 767.98px) {
-            section {
-                padding: 80px 0;
-            }
-
+        @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.4rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .about-img {
-                margin-bottom: 30px;
-            }
-
-            .skill-item {
-                flex: 0 0 calc(100% - 20px);
-            }
-
-            .collaboration-item {
-                flex: 0 0 calc(50% - 20px);
-            }
-
-            .contact-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .hero-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .hero-tagline {
                 font-size: 1.2rem;
             }
 
-            .portfolio-filter-btn {
-                padding: 5px 12px;
-                margin: 3px;
+            .timeline-content {
+                padding: 15px;
+            }
+
+            .process-title {
+                font-size: 1.3rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .about-heading h2, .scripts-heading h2, .process-heading h2, .testimonials-heading h2, .contact-heading h2 {
+                font-size: 2rem;
+            }
+
+            .genre-tab {
+                padding: 0.4rem 1rem;
                 font-size: 0.9rem;
             }
 
-            .collaboration-item {
-                flex: 0 0 calc(100% - 20px);
+            .testimonial-content {
+                padding: 2rem 1.5rem;
             }
 
-            .back-to-top {
-                bottom: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
+            .testimonial-text {
                 font-size: 1rem;
             }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+
+        .bg-accent {
+            background-color: var(--accent);
+        }
+
+        .bg-dark {
+            background-color: var(--dark);
+        }
+
+        .z-top {
+            z-index: 10;
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background-color: rgba(61, 24, 96, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Claymorphism Card */
+        .clay-card {
+            background-color: var(--primary);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                12px 12px 24px rgba(0, 0, 0, 0.4),
+                -12px -12px 24px rgba(83, 42, 128, 0.4);
+            border: none;
         }
     </style>
 </head>
 <body>
     <!-- Preloader -->
-    <div id="preloader" class="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style="background-color: var(--primary); z-index: 9999;">
-        <div class="spinner-border text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </div>
+    <div class="preloader">
+        <div class="loader"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-trail"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#hero">Alexander<span>Frost</span></a>
+            <a class="navbar-brand" href="#hero">Victor Fidelis</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -1323,266 +1776,345 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                        <a class="nav-link" href="#scripts">Scripts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#process">Process</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#testimonials">Testimonials</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#blog">Insights</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
+                <button class="theme-toggle ms-3">
+                    <i class="fas fa-sun"></i>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');" data-index="0"></div>
-        <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');" data-index="1"></div>
-        <div class="hero-background" style="background-image: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');" data-index="2"></div>
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-subtitle">Screenwriter | Story Architect</div>
-                <h1 class="hero-title">
-                    <span class="glitch-wrapper">
-                        <span class="glitch" data-text="Alexander Frost">Alexander Frost</span>
-                    </span>
-                </h1>
-                <div class="hero-tagline">Crafting cinematic narratives that transcend the ordinary</div>
-                <div class="hero-btn">
-                    <a href="#portfolio" class="custom-btn filled magnetic-element">View My Work</a>
-                    <a href="#contact" class="custom-btn ms-3 magnetic-element">Get In Touch</a>
-                </div>
+        <div class="stars-container"></div>
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="typewriter">Crafting Stories That Light Up The Screen</span>
+            </h1>
+            <p class="hero-subtitle">Award-winning scriptwriter bringing imagination to life through the magic of cinema</p>
+            <div>
+                <a href="#scripts" class="hero-cta magnetic-button">View My Work</a>
+                <a href="#contact" class="hero-cta magnetic-button">Get In Touch</a>
             </div>
         </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <div class="about-bg" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1625&q=80');"></div>
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="about-img">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Alexander Frost" class="img-fluid">
+        <div class="about-bg"></div>
+        <div class="container about-container">
+            <div class="about-heading">
+                <h2>The Screenwriter</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img class="about-image active" src="https://images.unsplash.com/photo-1551845728-6820a70a816b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Scriptwriter portrait">
+                    <img class="about-image" src="https://images.unsplash.com/photo-1532799755889-1247a1b7f10e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Scriptwriter working">
+                    <img class="about-image" src="https://images.unsplash.com/photo-1519791883288-dc8bd696e667?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="On set">
+                </div>
+                <div class="about-text">
+                    <h3 class="scramble-text" data-text="My Story">My Story</h3>
+                    <p>Welcome to my world of storytelling. I'm a passionate screenwriter with over a decade of experience crafting narratives that captivate audiences around the globe. My journey began in small independent productions and has grown to include award-winning feature films and collaborations with major studios.</p>
+                    <p>My writing style blends vivid character development with imaginative worlds, creating stories that resonate on a deeply human level while transporting viewers to places they've never been. I specialize in drama, science fiction, and fantasy genres, though I enjoy venturing beyond these boundaries to explore new narrative territories.</p>
+                </div>
+            </div>
+            <div class="about-quote">
+                <blockquote>"The most powerful stories are the ones that connect with the audience's hearts, making them forget they're watching a film and instead feel like they're living it."</blockquote>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2012</div>
+                        <h3>First Short Film</h3>
+                        <p>Wrote and directed "Echoes of Tomorrow," which won Best Short Film at the Independent Film Festival.</p>
                     </div>
                 </div>
-                <div class="col-lg-7">
-                    <div class="about-content">
-                        <p>Hello! I'm <span class="bio-highlight scramble-text">Alexander Frost</span>, a screenwriter and narrative designer with over <span class="bio-highlight">8 years</span> of experience in crafting compelling stories for film, television, and digital media.</p>
-                        
-                        <p>My journey began at <span class="bio-highlight">NYU's Tisch School of the Arts</span>, where I discovered my passion for exploring the human condition through visual storytelling. Since then, I've collaborated with studios and independent filmmakers alike, specializing in <span class="bio-highlight">psychological thrillers</span> and <span class="bio-highlight">science fiction</span> that challenge perceptions and provoke thought.</p>
-                        
-                        <p>I believe that the best stories are those that strike a delicate balance between entertainment and substance — narratives that captivate audiences while simultaneously inviting them to reflect on the deeper aspects of our shared experience.</p>
-                        
-                        <p>When I'm not crafting new worlds at my desk in <span class="bio-highlight">Los Angeles</span>, you can find me hiking the canyons or lost in the pages of speculative fiction, constantly seeking inspiration from both the natural world and the boundless realms of imagination.</p>
-                        
-                        <div class="mt-4">
-                            <a href="#" class="custom-btn filled magnetic-element">Download Resume</a>
-                        </div>
-                        
-                        <ul class="skills-list mt-4">
-                            <li>Feature Films</li>
-                            <li>TV Series</li>
-                            <li>Short Films</li>
-                            <li>Story Consulting</li>
-                            <li>Character Development</li>
-                            <li>Script Doctoring</li>
-                        </ul>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2015</div>
+                        <h3>Feature Film Debut</h3>
+                        <p>"The Silent Hour" marked my first feature-length screenplay to be produced, receiving critical acclaim.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019</div>
+                        <h3>Studio Collaboration</h3>
+                        <p>Joined the writing team for "Eternal Horizons," a major studio production that grossed over $200 million worldwide.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3>Award Winner</h3>
+                        <p>"Beyond the Veil" won Best Original Screenplay at the International Film Awards, cementing my place in the industry.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <div class="portfolio-bg" style="background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');"></div>
-        <div class="container">
-            <h2 class="section-title">Selected Works</h2>
-            
-            <div class="portfolio-filters">
-                <button class="portfolio-filter-btn active" data-filter="all">All</button>
-                <button class="portfolio-filter-btn" data-filter="feature">Feature Film</button>
-                <button class="portfolio-filter-btn" data-filter="tv">TV Series</button>
-                <button class="portfolio-filter-btn" data-filter="short">Short Film</button>
+    <!-- Scripts/Portfolio Section -->
+    <section id="scripts">
+        <div class="scripts-bg"></div>
+        <div class="container scripts-container">
+            <div class="scripts-heading">
+                <h2>The Scripts</h2>
             </div>
-            
-            <div class="row portfolio-items">
-                <div class="col-lg-4 col-md-6 portfolio-item" data-category="feature">
-                    <div class="glass-card h-100">
-                        <div class="portfolio-content">
-                            <span class="portfolio-category">Feature Film</span>
-                            <h3 class="portfolio-title script-title">Echoes of Eternity</h3>
-                            <p class="portfolio-logline">A time-distorted love story where a physicist must solve the mystery of his partner's disappearance by manipulating the very fabric of time and memory.</p>
-                            <div class="portfolio-meta">
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-film"></i>
-                                    <span>Psychological Sci-Fi</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span>2023</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-award"></i>
-                                    <span>Austin Film Festival Finalist</span>
-                                </div>
+            <div class="genres-tabs">
+                <button class="genre-tab active" data-genre="all">All</button>
+                <button class="genre-tab" data-genre="drama">Drama</button>
+                <button class="genre-tab" data-genre="scifi">Sci-Fi</button>
+                <button class="genre-tab" data-genre="fantasy">Fantasy</button>
+                <button class="genre-tab" data-genre="thriller">Thriller</button>
+            </div>
+            <div class="scripts-wrapper">
+                <div class="scripts-content active" data-genre="all">
+                    <div class="script-card" data-script="the-silent-hour">
+                        <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Silent Hour" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">The Silent Hour</h3>
+                            <p class="script-desc">A psychological drama about a pianist who loses his hearing and must navigate a world of silence while preparing for the most important performance of his life.</p>
+                            <div>
+                                <span class="badge">Drama</span>
+                                <span class="badge">Feature</span>
                             </div>
-                            <div class="portfolio-actions">
-                                <a href="#" class="portfolio-link">Read Sample <i class="fas fa-arrow-right"></i></a>
-                                <a href="#" class="portfolio-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="beyond-the-veil">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beyond the Veil" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Beyond the Veil</h3>
+                            <p class="script-desc">An award-winning science fiction tale of a researcher who discovers a way to communicate with parallel dimensions, only to find a version of herself in grave danger.</p>
+                            <div>
+                                <span class="badge">Sci-Fi</span>
+                                <span class="badge">Feature</span>
+                                <span class="badge">Award Winner</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="crimson-tides">
+                        <img src="https://images.unsplash.com/photo-1551316679-9c6ae9dec224?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crimson Tides" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Crimson Tides</h3>
+                            <p class="script-desc">A historical fantasy about a mythical island that appears once every century, and the rival explorers racing to discover its secrets before it vanishes again.</p>
+                            <div>
+                                <span class="badge">Fantasy</span>
+                                <span class="badge">Adventure</span>
+                                <span class="badge">Feature</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="the-last-echo">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Last Echo" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">The Last Echo</h3>
+                            <p class="script-desc">A thriller about a sound designer who captures a mysterious audio recording that becomes evidence in a high-profile murder case, making her the next target.</p>
+                            <div>
+                                <span class="badge">Thriller</span>
+                                <span class="badge">Mystery</span>
+                                <span class="badge">Feature</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="beneath-the-surface">
+                        <img src="https://images.unsplash.com/photo-1551022372-0bdac482d9c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beneath the Surface" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Beneath the Surface</h3>
+                            <p class="script-desc">A drama exploring the complex relationships within a family when long-buried secrets emerge during their annual reunion at a lakeside cabin.</p>
+                            <div>
+                                <span class="badge">Drama</span>
+                                <span class="badge">Feature</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="eternal-horizons">
+                        <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Eternal Horizons" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Eternal Horizons</h3>
+                            <p class="script-desc">An epic sci-fi adventure following humanity's first interstellar mission to colonize a distant planet, facing both cosmic threats and human conflicts.</p>
+                            <div>
+                                <span class="badge">Sci-Fi</span>
+                                <span class="badge">Feature</span>
+                                <span class="badge">Studio</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 portfolio-item" data-category="tv">
-                    <div class="glass-card h-100">
-                        <div class="portfolio-content">
-                            <span class="portfolio-category">TV Series</span>
-                            <h3 class="portfolio-title script-title">Threshold</h3>
-                            <p class="portfolio-logline">A brilliant neuroscientist develops technology to access people's memories but discovers a conspiracy when her patients' memories don't match recorded history.</p>
-                            <div class="portfolio-meta">
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-film"></i>
-                                    <span>Mystery Thriller</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span>2022</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-award"></i>
-                                    <span>In Development</span>
-                                </div>
+                <div class="scripts-content" data-genre="drama">
+                    <div class="script-card" data-script="the-silent-hour">
+                        <img src="https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Silent Hour" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">The Silent Hour</h3>
+                            <p class="script-desc">A psychological drama about a pianist who loses his hearing and must navigate a world of silence while preparing for the most important performance of his life.</p>
+                            <div>
+                                <span class="badge">Drama</span>
+                                <span class="badge">Feature</span>
                             </div>
-                            <div class="portfolio-actions">
-                                <a href="#" class="portfolio-link">Read Pilot <i class="fas fa-arrow-right"></i></a>
-                                <a href="#" class="portfolio-link">View Series Bible <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="beneath-the-surface">
+                        <img src="action.jpg" alt="Beneath the Surface" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Tomb Raider</h3>
+                            <p class="script-desc">A drama exploring the complex relationships within a family when long-buried secrets emerge during their annual reunion at a lakeside cabin.</p>
+                            <div>
+                                <span class="badge">Drama</span>
+                                <span class="badge">Feature</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 portfolio-item" data-category="feature">
-                    <div class="glass-card h-100">
-                        <div class="portfolio-content">
-                            <span class="portfolio-category">Feature Film</span>
-                            <h3 class="portfolio-title script-title">The Lighthouse Between Worlds</h3>
-                            <p class="portfolio-logline">An aging lighthouse keeper discovers his station sits at a convergence of parallel realities, forcing him to prevent a traveler from collapsing both worlds.</p>
-                            <div class="portfolio-meta">
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-film"></i>
-                                    <span>Fantasy Drama</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span>2021</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-award"></i>
-                                    <span>Nicholl Fellowship Quarterfinalist</span>
-                                </div>
+                <div class="scripts-content" data-genre="scifi">
+                    <div class="script-card" data-script="beyond-the-veil">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beyond the Veil" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Beyond the Veil</h3>
+                            <p class="script-desc">An award-winning science fiction tale of a researcher who discovers a way to communicate with parallel dimensions, only to find a version of herself in grave danger.</p>
+                            <div>
+                                <span class="badge">Sci-Fi</span>
+                                <span class="badge">Feature</span>
+                                <span class="badge">Award Winner</span>
                             </div>
-                            <div class="portfolio-actions">
-                                <a href="#" class="portfolio-link">Read Sample <i class="fas fa-arrow-right"></i></a>
-                                <a href="#" class="portfolio-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                    <div class="script-card" data-script="eternal-horizons">
+                        <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Eternal Horizons" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Eternal Horizons</h3>
+                            <p class="script-desc">An epic sci-fi adventure following humanity's first interstellar mission to colonize a distant planet, facing both cosmic threats and human conflicts.</p>
+                            <div>
+                                <span class="badge">Sci-Fi</span>
+                                <span class="badge">Feature</span>
+                                <span class="badge">Studio</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 portfolio-item" data-category="short">
-                    <div class="glass-card h-100">
-                        <div class="portfolio-content">
-                            <span class="portfolio-category">Short Film</span>
-                            <h3 class="portfolio-title script-title">Petrichor</h3>
-                            <p class="portfolio-logline">In a near-future where rain has become toxic, a botanist discovers a flower that thrives in the poisoned water, giving hope for humanity's survival.</p>
-                            <div class="portfolio-meta">
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-film"></i>
-                                    <span>Environmental Sci-Fi</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span>2022</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-award"></i>
-                                    <span>Produced - Festival Circuit</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-actions">
-                                <a href="#" class="portfolio-link">Watch Film <i class="fas fa-play"></i></a>
-                                <a href="#" class="portfolio-link">View Project <i class="fas fa-external-link-alt"></i></a>
+                <div class="scripts-content" data-genre="fantasy">
+                    <div class="script-card" data-script="crimson-tides">
+                        <img src="https://images.unsplash.com/photo-1551316679-9c6ae9dec224?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Crimson Tides" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">Crimson Tides</h3>
+                            <p class="script-desc">A historical fantasy about a mythical island that appears once every century, and the rival explorers racing to discover its secrets before it vanishes again.</p>
+                            <div>
+                                <span class="badge">Fantasy</span>
+                                <span class="badge">Adventure</span>
+                                <span class="badge">Feature</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 portfolio-item" data-category="tv">
-                    <div class="glass-card h-100">
-                        <div class="portfolio-content">
-                            <span class="portfolio-category">TV Series</span>
-                            <h3 class="portfolio-title script-title">Liminal Spaces</h3>
-                            <p class="portfolio-logline">An anthology series exploring mysterious locations that exist between reality and something else—empty malls, vacant hotels, and abandoned places with unsettling energy.</p>
-                            <div class="portfolio-meta">
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-film"></i>
-                                    <span>Supernatural Anthology</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span>2023</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-award"></i>
-                                    <span>Pitching Stage</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-actions">
-                                <a href="#" class="portfolio-link">Read Pilot <i class="fas fa-arrow-right"></i></a>
-                                <a href="#" class="portfolio-link">View Concept Art <i class="fas fa-external-link-alt"></i></a>
+                <div class="scripts-content" data-genre="thriller">
+                    <div class="script-card" data-script="the-last-echo">
+                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="The Last Echo" class="script-image">
+                        <div class="script-info">
+                            <h3 class="script-title">The Last Echo</h3>
+                            <p class="script-desc">A thriller about a sound designer who captures a mysterious audio recording that becomes evidence in a high-profile murder case, making her the next target.</p>
+                            <div>
+                                <span class="badge">Thriller</span>
+                                <span class="badge">Mystery</span>
+                                <span class="badge">Feature</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-4 col-md-6 portfolio-item" data-category="short">
-                    <div class="glass-card h-100">
-                        <div class="portfolio-content">
-                            <span class="portfolio-category">Short Film</span>
-                            <h3 class="portfolio-title script-title">Aphelion</h3>
-                            <p class="portfolio-logline">A lone astronaut makes first contact during Earth's furthest point from the sun, changing humanity's understanding of its place in the cosmos.</p>
-                            <div class="portfolio-meta">
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-film"></i>
-                                    <span>Science Fiction</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span>2021</span>
-                                </div>
-                                <div class="portfolio-meta-item">
-                                    <i class="fas fa-award"></i>
-                                    <span>Sundance Short Film Showcase</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-actions">
-                                <a href="#" class="portfolio-link">Watch Trailer <i class="fas fa-play"></i></a>
-                                <a href="#" class="portfolio-link">Read Script <i class="fas fa-file-alt"></i></a>
-                            </div>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script Modal -->
+    <div class="script-modal">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2 class="modal-title">Script Title</h2>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="" class="modal-image">
+                <p class="modal-desc"></p>
+                <div class="modal-sample"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn">Read Full Script</button>
+                <button class="modal-btn close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="process-bg"></div>
+        <div class="container process-container">
+            <div class="process-heading">
+                <h2>The Alchemy</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="process-connect"></div>
+                    <div class="process-content">
+                        <h3 class="process-title">Idea Potion</h3>
+                        <p class="process-desc">Every great script begins with a spark of inspiration. I collect ideas from everywhere—conversations, dreams, books, current events—and combine them in unexpected ways to create something unique. This is where the magic begins, as I brew the perfect potion of concepts that will eventually become a full-fledged story.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <div class="process-connect"></div>
+                    <div class="process-content">
+                        <h3 class="process-title">Outline Scroll</h3>
+                        <p class="process-desc">Once the idea is formed, I create a detailed map of the narrative journey. This outline becomes my guide through the storytelling process, charting the major plot points, character arcs, and thematic elements. Like an ancient scroll revealing a treasure map, the outline shows the path while leaving room for discovery along the way.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="process-connect"></div>
+                    <div class="process-content">
+                        <h3 class="process-title">Character Conjuring</h3>
+                        <p class="process-desc">Characters are the heart of any story. I spend significant time developing each one—their desires, fears, strengths, and flaws. Through this character conjuring, I create multi-dimensional people who feel real and relatable. The best characters take on a life of their own, sometimes surprising even me with the directions they want to go.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="process-connect"></div>
+                    <div class="process-content">
+                        <h3 class="process-title">Dialogue Spell</h3>
+                        <p class="process-desc">Writing compelling dialogue is like casting a powerful spell. Each character's voice must be distinct and authentic, revealing who they are while advancing the story. I craft conversations that feel natural yet purposeful, with subtext adding layers of meaning beneath the surface. Good dialogue captivates the audience and breathes life into scenes.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <div class="process-connect"></div>
+                    <div class="process-content">
+                        <h3 class="process-title">Revision Alchemy</h3>
+                        <p class="process-desc">The true magic happens in revision. This is where I transform the raw material of early drafts into cinematic gold. I analyze structure, pacing, character motivations, and thematic coherence, making countless adjustments to strengthen the script. Feedback from trusted readers helps identify blind spots and ensures the story resonates as intended.</p>
                     </div>
                 </div>
             </div>
@@ -1591,411 +2123,60 @@
 
     <!-- Testimonials Section -->
     <section id="testimonials">
-        <div class="testimonials-bg" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');"></div>
-        <div class="container">
-            <h2 class="section-title">Testimonials</h2>
-            
-            <div class="testimonial-container">
-                <div class="testimonial-track">
-                    <div class="testimonial-card active">
-                        <div class="clay-card testimonial-inner">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <div class="testimonial-content">
-                                <p class="testimonial-text">Alexander's screenplay captured the intricacies of human connection in ways I've rarely seen. His ability to create characters with depth and authenticity gave us a foundation to build something truly moving.</p>
-                                <div class="testimonial-author">
-                                    <div class="testimonial-author-img">
-                                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Director">
-                                    </div>
-                                    <div class="testimonial-author-info">
-                                        <h4 class="testimonial-author-name">Michael Reynolds</h4>
-                                        <div class="testimonial-author-role">Director, "Echoes of Eternity"</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="testimonials-bg"></div>
+        <div class="container testimonials-container">
+            <div class="testimonials-heading">
+                <h2>Voices from the Set</h2>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"Working with this script was a director's dream. The characters were so fully realized, and the dialogue so authentic that my job became about preservation rather than interpretation. This is screenwriting at its finest—visual, emotional, and profoundly human."</p>
                     </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="clay-card testimonial-inner">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <div class="testimonial-content">
-                                <p class="testimonial-text">Working with Alexander on our series was a revelation. His story architecture is impeccable—creating narrative arcs that feel both surprising and inevitable. Every episode he crafted left our viewers wanting more.</p>
-                                <div class="testimonial-author">
-                                    <div class="testimonial-author-img">
-                                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="Producer">
-                                    </div>
-                                    <div class="testimonial-author-info">
-                                        <h4 class="testimonial-author-name">Sophia Chen</h4>
-                                        <div class="testimonial-author-role">Executive Producer, Horizon Studios</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="clay-card testimonial-inner">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                            </div>
-                            <div class="testimonial-content">
-                                <p class="testimonial-text">Alexander has an uncanny ability to blend commercial appeal with artistic integrity. His scripts consistently attract top talent because the characters are so rich and the dialogue so authentic. A true wordsmith.</p>
-                                <div class="testimonial-author">
-                                    <div class="testimonial-author-img">
-                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Agent">
-                                    </div>
-                                    <div class="testimonial-author-info">
-                                        <h4 class="testimonial-author-name">Daniel Foster</h4>
-                                        <div class="testimonial-author-role">Literary Agent, Creative Artists</div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Director" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h4>James Anderson</h4>
+                            <p>Director, "Beyond the Veil"</p>
                         </div>
                     </div>
                 </div>
-                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"The depth of character development in this screenplay is extraordinary. As an actress, I found so many layers to explore and moments to inhabit fully. The writer's understanding of human nature and ability to translate that into authentic dialogue made this role the most rewarding of my career."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Actress" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h4>Elena Martinez</h4>
+                            <p>Lead Actress, "The Silent Hour"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">"In my 20 years as a producer, I've rarely encountered a writer with such a perfect balance of commercial appeal and artistic integrity. The scripts arrive meticulously crafted, with clear vision yet openness to collaboration. This rare combination has resulted in films that both critics and audiences adore."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Producer" class="testimonial-image">
+                        <div class="testimonial-info">
+                            <h4>Michael Reynolds</h4>
+                            <p>Executive Producer, Horizon Films</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="testimonial-controls">
                     <button class="testimonial-btn prev-testimonial">
-                        <i class="fas fa-arrow-left"></i>
+                        <i class="fas fa-chevron-left"></i>
                     </button>
                     <button class="testimonial-btn next-testimonial">
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-                
                 <div class="testimonial-indicators">
-                    <div class="testimonial-indicator active" data-index="0"></div>
-                    <div class="testimonial-indicator" data-index="1"></div>
-                    <div class="testimonial-indicator" data-index="2"></div>
-                </div>
-            </div>
-            
-            <div class="collaborations">
-                <h3 class="text-center mb-4">Collaborations & Studios</h3>
-                <div class="collaborations-grid">
-                    <div class="collaboration-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/A24_logo.svg/1280px-A24_logo.svg.png" alt="A24">
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png" alt="Netflix">
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/1280px-Disney%2B_logo.svg.png" alt="Disney+">
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Amazon_Prime_Video_logo.svg/1280px-Amazon_Prime_Video_logo.svg.png" alt="Amazon Prime">
-                    </div>
-                    <div class="collaboration-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Paramount_Pictures_2022_logo.svg/1200px-Paramount_Pictures_2022_logo.svg.png" alt="Paramount">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="skills-bg" style="background-image: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1590&q=80');"></div>
-        <div class="container skills-container">
-            <h2 class="section-title">Expertise & Tools</h2>
-            
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Screenwriting</h3>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Feature Screenplays</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="90">
-                                <div class="skill-icon">
-                                    <i class="fas fa-tv"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Television Scripts</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="85">
-                                <div class="skill-icon">
-                                    <i class="fas fa-film"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Short Films</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Storytelling</h3>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Character Development</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="90">
-                                <div class="skill-icon">
-                                    <i class="fas fa-sitemap"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Plot Structure</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-comment-alt"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Dialogue</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Software & Tools</h3>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Final Draft</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="85">
-                                <div class="skill-icon">
-                                    <i class="fas fa-pen-fancy"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">WriterDuet</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="90">
-                                <div class="skill-icon">
-                                    <i class="fas fa-project-diagram"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Scrivener</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row mt-5">
-                <div class="col-lg-4">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Genres</h3>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-rocket"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Science Fiction</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="90">
-                                <div class="skill-icon">
-                                    <i class="fas fa-mask"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Psychological Thriller</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="85">
-                                <div class="skill-icon">
-                                    <i class="fas fa-theater-masks"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Drama</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Industry Knowledge</h3>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill-level="90">
-                                <div class="skill-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Pitching</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="85">
-                                <div class="skill-icon">
-                                    <i class="fas fa-gavel"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Rights & Contracts</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-film"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Production Process</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="skill-category">
-                        <h3 class="skill-category-title">Collaboration</h3>
-                        <div class="skill-items">
-                            <div class="skill-item" data-skill-level="95">
-                                <div class="skill-icon">
-                                    <i class="fas fa-users-cog"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Writers' Room</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="90">
-                                <div class="skill-icon">
-                                    <i class="fas fa-edit"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Script Doctoring</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="skill-item" data-skill-level="85">
-                                <div class="skill-icon">
-                                    <i class="fas fa-comments"></i>
-                                </div>
-                                <div class="skill-info">
-                                    <div class="skill-name">Feedback Integration</div>
-                                    <div class="skill-level">
-                                        <div class="skill-progress" style="width: 0%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
-    <section id="blog">
-        <div class="blog-bg" style="background-image: url('https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1773&q=80');"></div>
-        <div class="container">
-            <h2 class="section-title">Insights & Thoughts</h2>
-            
-            <div class="blog-grid">
-                <div class="glass-card blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1518744386442-2d48ac47a7eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" alt="Blog Post">
-                        <div class="blog-date">May 15, 2023</div>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">The Art of Crafting Memorable Characters</h3>
-                        <p class="blog-excerpt">Exploring the delicate balance between character flaws and strengths that create authentic, three-dimensional personas that resonate with audiences...</p>
-                        <a href="#" class="blog-link">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="glass-card blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" alt="Blog Post">
-                        <div class="blog-date">April 8, 2023</div>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Navigating the Streaming Era as a Screenwriter</h3>
-                        <p class="blog-excerpt">How the proliferation of streaming platforms has changed both storytelling structure and the business of screenwriting in today's landscape...</p>
-                        <a href="#" class="blog-link">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="glass-card blog-card">
-                    <div class="blog-img">
-                        <img src="https://images.unsplash.com/photo-1616531770192-6eaea74c2456?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" alt="Blog Post">
-                        <div class="blog-date">March 22, 2023</div>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">Science Fiction: Mirror to Contemporary Society</h3>
-                        <p class="blog-excerpt">How the best sci-fi narratives hold up a mirror to present-day societal issues while simultaneously transporting audiences to speculative futures...</p>
-                        <a href="#" class="blog-link">Continue Reading <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
                 </div>
             </div>
         </div>
@@ -2003,51 +2184,71 @@
 
     <!-- Contact Section -->
     <section id="contact">
-        <div class="contact-bg" style="background-image: url('https://images.unsplash.com/photo-1528459709161-157ebc8e4ca8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80');"></div>
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="contact-title">Get In Touch</h2>
-                <p class="contact-text">Whether you're a producer looking for your next project, a fellow writer seeking collaboration, or just want to discuss storytelling, I'd love to hear from you.</p>
+        <div class="contact-bg"></div>
+        <div class="container contact-container">
+            <div class="contact-heading">
+                <h2>The Final Act</h2>
             </div>
-            
-            <div class="contact-form">
-                <div class="glass-card">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <p>123 Screenplay Avenue,<br>Hollywood, CA 90028,<br>United States</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <p><a href="mailto:contact@magicalscriptwriter.com">contact@magicalscriptwriter.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <p><a href="tel:+12345678900">+1 (234) 567-8900</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-vimeo-v"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
                     <form id="contactForm">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                </div>
-                            </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="name" placeholder=" " required>
+                            <label class="form-label" for="name">Your Name</label>
                         </div>
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                            <input type="email" class="form-control" id="email" placeholder=" " required>
+                            <label class="form-label" for="email">Your Email</label>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea class="form-control" id="message" placeholder="Your Message"></textarea>
+                            <input type="text" class="form-control" id="subject" placeholder=" " required>
+                            <label class="form-label" for="subject">Subject</label>
                         </div>
-                        <div class="form-submit">
-                            <button type="submit" class="custom-btn filled magnetic-element">Send Message</button>
+                        <div class="form-group">
+                            <textarea class="form-control" id="message" placeholder=" " required></textarea>
+                            <label class="form-label" for="message">Your Message</label>
                         </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
-                
-                <div class="social-links">
-                    <a href="#" class="social-link magnetic-element"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link magnetic-element"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link magnetic-element"><i class="fab fa-imdb"></i></a>
-                    <a href="#" class="social-link magnetic-element"><i class="fab fa-vimeo-v"></i></a>
-                    <a href="#" class="social-link magnetic-element"><i class="fas fa-envelope"></i></a>
-                </div>
+            </div>
+            <div class="map-container">
+                <div class="map-overlay"></div>
+                <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52865.95068266902!2d-118.3526151069234!3d34.09772929841502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf07045279bf%3A0xf67a9a6797bdfae4!2sHollywood%2C%20Los%20Angeles%2C%20CA%2C%20USA!5e0!3m2!1sen!2sca!4v1620841111768!5m2!1sen!2sca" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -2055,54 +2256,115 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <a href="#" class="footer-logo">Alexander<span>Frost</span></a>
-            <div class="footer-links">
-                <a href="#hero" class="footer-link">Home</a>
-                <a href="#about" class="footer-link">About</a>
-                <a href="#portfolio" class="footer-link">Portfolio</a>
-                <a href="#testimonials" class="footer-link">Testimonials</a>
-                <a href="#skills" class="footer-link">Skills</a>
-                <a href="#blog" class="footer-link">Insights</a>
-                <a href="#contact" class="footer-link">Contact</a>
+            <div class="footer-content">
+                <div class="footer-logo">Magical Scriptwriter</div>
+                <p class="footer-text">Bringing stories to life through the art of screenwriting. Let's create something magical together.</p>
+                <div class="footer-links">
+                    <a href="#hero" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#scripts" class="footer-link">Scripts</a>
+                    <a href="#process" class="footer-link">Process</a>
+                    <a href="#testimonials" class="footer-link">Testimonials</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="footer-social-link"><i class="fab fa-vimeo-v"></i></a>
+                </div>
             </div>
-            <p class="footer-text">© 2023 Alexander Frost. All Rights Reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Magical Scriptwriter. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JavaScript -->
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Wait for DOM content to load
         document.addEventListener('DOMContentLoaded', function() {
             // Preloader
             setTimeout(function() {
-                document.getElementById('preloader').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('preloader').style.display = 'none';
-                }, 500);
-            }, 1000);
+                document.querySelector('.preloader').classList.add('fade-out');
+            }, 1500);
 
-            // Activate first hero background
-            document.querySelector('.hero-background[data-index="0"]').classList.add('active');
-            let currentBgIndex = 0;
-            const heroBgs = document.querySelectorAll('.hero-background');
-            
-            // Hero background slideshow
-            setInterval(function() {
-                document.querySelector(`.hero-background[data-index="${currentBgIndex}"]`).classList.remove('active');
-                currentBgIndex = (currentBgIndex + 1) % heroBgs.length;
-                document.querySelector(`.hero-background[data-index="${currentBgIndex}"]`).classList.add('active');
-            }, 5000);
+            // Background Images
+            const heroBackgrounds = [
+                'https://images.unsplash.com/photo-1535016120720-40c646be5580?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1478720568477-152d9b164e26?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
 
-            // Navbar scroll effect
+            const aboutBackgrounds = [
+                'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
+
+            const scriptsBackgrounds = [
+                'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
+
+            const processBackgrounds = [
+                'https://images.unsplash.com/photo-1518247268172-6bf9ecb94527?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
+
+            const testimonialsBackgrounds = [
+                'https://images.unsplash.com/photo-1490971588422-52f6262a237a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1526948128573-703ee1aeb6fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
+
+            const contactBackgrounds = [
+                'https://images.unsplash.com/photo-1534802046520-4f27db7f3ae5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
+                'https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            ];
+
+            function loadBackground(selector, images) {
+                const bgElement = document.querySelector(selector);
+                if (!bgElement) return;
+                
+                bgElement.style.backgroundImage = `url(${images[0]})`;
+                bgElement.classList.add('active');
+                
+                let currentIndex = 0;
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    bgElement.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        bgElement.style.backgroundImage = `url(${images[currentIndex]})`;
+                        bgElement.style.opacity = '0.4';
+                    }, 1000);
+                }, 8000);
+            }
+
+            loadBackground('.hero-background', heroBackgrounds);
+            loadBackground('.about-bg', aboutBackgrounds);
+            loadBackground('.scripts-bg', scriptsBackgrounds);
+            loadBackground('.process-bg', processBackgrounds);
+            loadBackground('.testimonials-bg', testimonialsBackgrounds);
+            loadBackground('.contact-bg', contactBackgrounds);
+
+            // Create stars for hero section
+            const starsContainer = document.querySelector('.stars-container');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.width = `${Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                starsContainer.appendChild(star);
+            }
+
+            // Navbar scroll event
             const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
                 } else {
@@ -2110,137 +2372,384 @@
                 }
             });
 
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
+            // About image slider
+            const aboutImages = document.querySelectorAll('.about-image');
+            let currentImageIndex = 0;
+            
+            setInterval(() => {
+                aboutImages[currentImageIndex].classList.remove('active');
+                currentImageIndex = (currentImageIndex + 1) % aboutImages.length;
+                aboutImages[currentImageIndex].classList.add('active');
+            }, 5000);
+
+            // Scripts/Portfolio tabs
+            const genreTabs = document.querySelectorAll('.genre-tab');
+            const scriptsContents = document.querySelectorAll('.scripts-content');
+            
+            genreTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    genreTabs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Hide all content
+                    scriptsContents.forEach(content => {
+                        content.classList.remove('active');
                     });
+                    
+                    // Show content related to clicked tab
+                    const genre = tab.getAttribute('data-genre');
+                    const content = document.querySelector(`.scripts-content[data-genre="${genre}"]`);
+                    content.classList.add('active');
                 });
             });
 
-            // Back to top button
-            const backToTopBtn = document.querySelector('.back-to-top');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTopBtn.classList.add('visible');
-                } else {
-                    backToTopBtn.classList.remove('visible');
+            // Script modal
+            const scriptCards = document.querySelectorAll('.script-card');
+            const scriptModal = document.querySelector('.script-modal');
+            const closeModalBtns = document.querySelectorAll('.close-modal, .close-btn');
+            
+            scriptCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const scriptId = card.getAttribute('data-script');
+                    const scriptTitle = card.querySelector('.script-title').textContent;
+                    const scriptDesc = card.querySelector('.script-desc').textContent;
+                    const scriptImage = card.querySelector('.script-image').src;
+                    
+                    // Set modal content
+                    document.querySelector('.modal-title').textContent = scriptTitle;
+                    document.querySelector('.modal-desc').textContent = scriptDesc;
+                    document.querySelector('.modal-image').src = scriptImage;
+                    document.querySelector('.modal-image').alt = scriptTitle;
+                    
+                    // Show sample script content
+                    document.querySelector('.modal-sample').textContent = generateSampleScript(scriptId);
+                    
+                    // Show modal
+                    scriptModal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    scriptModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            window.addEventListener('click', (e) => {
+                if (e.target === scriptModal) {
+                    scriptModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
                 }
             });
 
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
+            function generateSampleScript(scriptId) {
+                const samples = {
+                    'the-silent-hour': `FADE IN:
+
+INT. CONCERT HALL - NIGHT
+
+The grand piano sits center stage, bathed in a single spotlight. The audience is a sea of shadows.
+
+THOMAS (35), poised and confident, approaches the piano. He sits, takes a breath, and places his fingers on the keys.
+
+THOMAS (V.O.)
+Music has always spoken to me in ways words never could.
+
+He begins to play Chopin's Nocturne No. 20. The melody floats through the hall. We see faces in the audience, moved by the performance.
+
+THOMAS (V.O.)
+But what happens when the music goes silent?
+
+Suddenly, the sound FADES, becoming muffled. Thomas continues playing, unaware that the notes are becoming increasingly distant to him.
+
+CLOSE ON: Thomas's ear as sound distorts, then disappears completely.
+
+Thomas freezes. Panic crosses his face as he realizes he can no longer hear the music.`,
+                    'beyond-the-veil': `FADE IN:
+
+INT. QUANTUM RESEARCH LAB - NIGHT
+
+DR. ELEANOR SHAW (38), intense and brilliant, stands before a wall of equations. The room is illuminated by holographic data streams and pulsing light from experimental equipment.
+
+ELEANOR
+(to herself)
+It's not about crossing dimensions. It's about communication between them.
+
+She adjusts parameters on a complex machine. A wavering field of energy forms in the center of the lab.
+
+ELEANOR (CONT'D)
+Initiating quantum resonance in three, two, one...
+
+She activates the machine. The energy field STABILIZES, forming a translucent window. Through it, we see ANOTHER LAB, identical but subtly different. And standing on the other side is ANOTHER ELEANOR, looking back in shock.
+
+ALT-ELEANOR
+(through the field, voice distorted)
+It worked. You actually did it.
+
+ELEANOR
+(stunned)
+We did it. In both dimensions.
+
+ALT-ELEANOR
+You need to shut it down. Now. They're coming for me. They'll come for you too.`,
+                    'crimson-tides': `FADE IN:
+
+EXT. OPEN OCEAN - DAWN
+
+A blood-red sun rises over calm waters. In the distance, a shimmer appears on the horizon. It coalesces into the outline of an ISLAND where none existed before.
+
+CAPTAIN ELIAS BLACKWOOD (45), weathered and determined, stands at the bow of his ship, the ADVENTURE. He lowers his spyglass, a glint of triumph in his eyes.
+
+BLACKWOOD
+There she is, gentlemen. Vermilion Isle. Just as the legends foretold.
+
+FIRST MATE COLLINS approaches, concern etched on his face.
+
+COLLINS
+Captain, we're not alone.
+
+Blackwood raises his spyglass again. Through it, we see another ship approaching from the east – sleeker, faster.
+
+BLACKWOOD
+The Siren's Call. Goddamn Valentina.
+
+COLLINS
+She's got a two-hour head start on us.
+
+BLACKWOOD
+Then we'd best make haste. Vermilion Isle only reveals herself for three days every century. And I've waited too long to be beaten to her secrets.`,
+                    'the-last-echo': `FADE IN:
+
+INT. SOUND STUDIO - NIGHT
+
+MAYA REEVES (32), focused and meticulous, sits before a complex audio workstation. She wears high-end headphones, her face illuminated by the monitor's glow.
+
+She manipulates the audio waves on screen, isolating specific frequencies.
+
+MAYA
+(muttering)
+There's something else here...
+
+She enhances a section of audio. A faint voice emerges from the background noise.
+
+VOICE (filtered through headphones)
+Please... don't...
+
+Maya freezes. She plays it again.
+
+VOICE (filtered through headphones)
+Please... don't... I know who you are.
+
+Maya slowly removes her headphones, disturbed.
+
+MAYA
+What the hell?
+
+She checks the source file name: "Central Park Ambient Sounds - Tuesday 10:30PM." The date stamp shows it was recorded three days before a high-profile murder case that's been all over the news.`,
+                    'beneath-the-surface': `FADE IN:
+
+EXT. LAKESIDE CABIN - DAY
+
+A picturesque cabin beside a tranquil lake. Mountains reflect in the still water. Idyllic, peaceful.
+
+Multiple cars pull up the gravel driveway. The FOSTER FAMILY emerges – parents, siblings, spouses, children – carrying luggage and greeting each other with varying degrees of enthusiasm.
+
+DAVID FOSTER (65), patriarchal and commanding, stands on the porch watching his family arrive.
+
+DAVID
+(calling out)
+Welcome to the annual Foster family reunion! Same as every year, but always full of surprises!
+
+His wife, ELAINE (63), elegant but tense, appears beside him.
+
+ELAINE
+(quietly)
+Did you tell them?
+
+DAVID
+(keeping his smile)
+Not yet. Let them settle in first.
+
+ELAINE
+They deserve to know before—
+
+DAVID
+(cutting her off)
+I said not yet.
+
+Their daughter SAMANTHA (35) approaches, noticing the tension.
+
+SAMANTHA
+Everything okay?
+
+DAVID
+(overly cheerful)
+Perfect! Just perfect!`,
+                    'eternal-horizons': `FADE IN:
+
+EXT. SPACE - EARTH ORBIT
+
+The massive colony ship HORIZON SEEKER moves silently against the starfield, Earth's blue curve visible below. The ship is a marvel of engineering – one mile long, rotating habitat rings creating artificial gravity.
+
+INT. HORIZON SEEKER - BRIDGE
+
+COMMANDER DIANA CHEN (45), stoic and resolute, studies holographic star charts. The destination – KEPLER-452b – pulses with promise.
+
+SCIENCE OFFICER PATEL approaches with a tablet.
+
+PATEL
+Final diagnostics complete, Commander. All systems nominal.
+
+CHEN
+Seven years in space. No room for error.
+
+PATEL
+The 10,000 colonists are in final preparations. And... the Council has sent their last transmission.
+
+Chen takes the tablet, reads it, her expression hardening.
+
+CHEN
+They've cut our support resources by thirty percent. They're sending a second ship in five years.
+
+PATEL
+That wasn't the agreement.
+
+CHEN
+Politicians. Always hedging their bets.
+
+She stands, gazing out at Earth below.
+
+CHEN (CONT'D)
+We'll make do. We always do.`
+                };
+                
+                return samples[scriptId] || 'Sample script not available.';
+            }
+
+            // Testimonial slider
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const testimonialDots = document.querySelectorAll('.testimonial-dot');
+            const prevTestimonial = document.querySelector('.prev-testimonial');
+            const nextTestimonial = document.querySelector('.next-testimonial');
+            let currentTestimonialIndex = 0;
+
+            function showTestimonial(index) {
+                testimonialSlides.forEach(slide => slide.classList.remove('active'));
+                testimonialDots.forEach(dot => dot.classList.remove('active'));
+                testimonialSlides[index].classList.add('active');
+                testimonialDots[index].classList.add('active');
+                currentTestimonialIndex = index;
+            }
+
+            prevTestimonial.addEventListener('click', () => {
+                let index = currentTestimonialIndex - 1;
+                if (index < 0) index = testimonialSlides.length - 1;
+                showTestimonial(index);
+            });
+
+            nextTestimonial.addEventListener('click', () => {
+                let index = currentTestimonialIndex + 1;
+                if (index >= testimonialSlides.length) index = 0;
+                showTestimonial(index);
+            });
+
+            testimonialDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const index = parseInt(dot.getAttribute('data-index'));
+                    showTestimonial(index);
                 });
             });
 
-            // Portfolio filtering
-            const portfolioFilters = document.querySelectorAll('.portfolio-filter-btn');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            // Auto rotate testimonials
+            setInterval(() => {
+                let index = currentTestimonialIndex + 1;
+                if (index >= testimonialSlides.length) index = 0;
+                showTestimonial(index);
+            }, 7000);
 
-            portfolioFilters.forEach(filter => {
-                filter.addEventListener('click', function() {
-                    // Remove active class from all filters
-                    portfolioFilters.forEach(btn => btn.classList.remove('active'));
-                    // Add active class to clicked filter
-                    this.classList.add('active');
-                    
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    portfolioItems.forEach(item => {
-                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
+            // Scroll animations
+            const scrollElements = {
+                '.about-text': 0.8,
+                '.about-quote': 0.8,
+                '.timeline-item': 0.8,
+                '.process-step': 0.8,
+                '.contact-info': 0.8,
+                '.contact-form': 0.8,
+                '.map-container': 0.8
+            };
+
+            function checkScrollAnimation() {
+                Object.entries(scrollElements).forEach(([selector, threshold]) => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(element => {
+                        const elementTop = element.getBoundingClientRect().top;
+                        const elementVisible = window.innerHeight * threshold;
+                        
+                        if (elementTop < elementVisible) {
+                            element.classList.add('animate');
                         }
                     });
                 });
-            });
-
-            // Testimonial Slider
-            const testimonialTrack = document.querySelector('.testimonial-track');
-            const testimonialCards = document.querySelectorAll('.testimonial-card');
-            const prevBtn = document.querySelector('.prev-testimonial');
-            const nextBtn = document.querySelector('.next-testimonial');
-            const indicators = document.querySelectorAll('.testimonial-indicator');
-            let currentTestimonial = 0;
-
-            function showTestimonial(index) {
-                // Hide all testimonials
-                testimonialCards.forEach(card => card.classList.remove('active'));
-                indicators.forEach(indicator => indicator.classList.remove('active'));
-                
-                // Show the current testimonial
-                testimonialCards[index].classList.add('active');
-                indicators[index].classList.add('active');
-                
-                // Move the track
-                testimonialTrack.style.transform = `translateX(-${index * 100}%)`;
             }
 
-            prevBtn.addEventListener('click', function() {
-                currentTestimonial = (currentTestimonial - 1 + testimonialCards.length) % testimonialCards.length;
-                showTestimonial(currentTestimonial);
-            });
-
-            nextBtn.addEventListener('click', function() {
-                currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-                showTestimonial(currentTestimonial);
-            });
-
-            indicators.forEach((indicator, index) => {
-                indicator.addEventListener('click', function() {
-                    currentTestimonial = index;
-                    showTestimonial(currentTestimonial);
-                });
-            });
-
-            // Auto advance testimonials
-            setInterval(function() {
-                currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
-                showTestimonial(currentTestimonial);
-            }, 7000);
-
-            // Skill Progress Animation
-            const skillItems = document.querySelectorAll('.skill-item');
+            // Initial check for elements in view
+            checkScrollAnimation();
             
-            function animateSkills() {
-                skillItems.forEach(item => {
-                    const skillLevel = item.getAttribute('data-skill-level');
-                    const progress = item.querySelector('.skill-progress');
-                    progress.style.width = skillLevel + '%';
-                });
+            // Check on scroll
+            window.addEventListener('scroll', checkScrollAnimation);
+
+            // Custom cursor
+            const cursor = document.querySelector('.custom-cursor');
+            const cursorTrails = [];
+            const numTrails = 5;
+
+            // Create cursor trails
+            for (let i = 0; i < numTrails; i++) {
+                const trail = document.createElement('div');
+                trail.classList.add('cursor-trail');
+                document.body.appendChild(trail);
+                cursorTrails.push(trail);
             }
 
-            // Intersection Observer for scrolling animations
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        if (entry.target.classList.contains('skill-item')) {
-                            const skillLevel = entry.target.getAttribute('data-skill-level');
-                            const progress = entry.target.querySelector('.skill-progress');
-                            progress.style.width = skillLevel + '%';
-                        }
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
+            // Cursor movement
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                // Update cursor trails with delay
+                setTimeout(() => {
+                    cursorTrails.forEach((trail, index) => {
+                        setTimeout(() => {
+                            trail.style.left = e.clientX + 'px';
+                            trail.style.top = e.clientY + 'px';
+                        }, index * 60);
+                    });
+                }, 50);
+            });
+
+            // Magnetic effect on buttons
+            const magneticButtons = document.querySelectorAll('.magnetic-button');
+            
+            magneticButtons.forEach(button => {
+                button.addEventListener('mousemove', (e) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const strength = 20;
+                    
+                    button.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
                 });
-            }, { threshold: 0.2 });
-
-            // Observe skill items
-            skillItems.forEach(item => {
-                observer.observe(item);
+                
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translate(0, 0)';
+                });
             });
 
-            // Observe glass cards for animation
-            document.querySelectorAll('.glass-card, .clay-card').forEach(card => {
-                observer.observe(card);
-            });
-
-            // Text Scramble Effect
+            // Text scramble effect
             class TextScramble {
                 constructor(el) {
                     this.el = el;
@@ -2304,73 +2813,106 @@
                 }
             }
 
-            // Initialize text scramble effect
-            document.querySelectorAll('.scramble-text').forEach(el => {
-                const fx = new TextScramble(el);
-                let counter = 0;
-                const next = () => {
-                    fx.setText(el.innerText);
-                    setTimeout(next, 8000);
-                };
-                next();
-                
-                // When element is scrolled into view
-                const observerScramble = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            fx.setText(el.innerText);
-                            observerScramble.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 });
-                
-                observerScramble.observe(el);
-            });
-
-            // Magnetic Elements
-            const magneticElements = document.querySelectorAll('.magnetic-element');
+            // Initialize text scramble effect on scroll
+            const scrambleElements = document.querySelectorAll('.scramble-text');
             
-            magneticElements.forEach(elem => {
-                elem.addEventListener('mousemove', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
+            function checkScrambleElements() {
+                scrambleElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = window.innerHeight * 0.8;
                     
-                    this.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                    if (elementTop < elementVisible && !element.classList.contains('scrambled')) {
+                        element.classList.add('scrambled');
+                        const text = element.getAttribute('data-text');
+                        const scrambler = new TextScramble(element);
+                        scrambler.setText(text);
+                    }
                 });
-                
-                elem.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translate(0px, 0px)';
-                });
+            }
+            
+            window.addEventListener('scroll', checkScrambleElements);
+            checkScrambleElements(); // Initial check
+
+            // Glitch effect on text
+            const glitchElements = document.querySelectorAll('.glitch-text');
+            
+            glitchElements.forEach(element => {
+                const text = element.textContent;
+                element.setAttribute('data-text', text);
             });
 
-            // Form validation
+            // Theme toggle
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.querySelector('body');
+            let isDarkTheme = true;
+            
+            themeToggle.addEventListener('click', () => {
+                if (isDarkTheme) {
+                    body.classList.add('light-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                } else {
+                    body.classList.remove('light-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                }
+                isDarkTheme = !isDarkTheme;
+            });
+
+            // Contact form submission
             const contactForm = document.getElementById('contactForm');
             
-            contactForm.addEventListener('submit', function(e) {
+            contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // Basic form validation
+                // Get form values
                 const name = document.getElementById('name').value;
                 const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
                 const message = document.getElementById('message').value;
                 
-                if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
+                // In a real application, you would send this data to a server
+                console.log('Form submitted:', { name, email, subject, message });
                 
-                // Email validation
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address.');
-                    return;
-                }
+                // Show success message
+                alert('Thank you for your message! I will get back to you soon.');
                 
-                // Success message (in a real scenario, this would submit to a server)
-                alert('Message sent successfully! I will get back to you soon.');
+                // Reset form
                 contactForm.reset();
             });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Initialize AOS-like scroll animations manually
+            function initScrollAnimations() {
+                const elements = document.querySelectorAll('.about-text, .about-quote, .timeline-item, .process-step, .contact-info, .contact-form, .map-container');
+                
+                elements.forEach(element => {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('animate');
+                            }
+                        });
+                    }, { threshold: 0.2 });
+                    
+                    observer.observe(element);
+                });
+            }
+            
+            initScrollAnimations();
         });
     </script>
 </body>
